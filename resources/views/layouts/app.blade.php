@@ -7,7 +7,6 @@
         <!-- Include your default CSS files here -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
         @stack('styles')
     </head>
     <body>
@@ -19,7 +18,6 @@
         <!-- Include your default JS files here -->
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.js') }}"></script>
-        <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         @stack('scripts')
     </body>

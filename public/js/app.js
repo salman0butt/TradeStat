@@ -22,25 +22,30 @@ $(document).ready(function () {
         // Validate Company Symbol
         if (symbolInput.val().trim() === '') {
             showError(symbolInput, 'Company Symbol is required');
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
         }
 
         // Validate Start Date
         if (startDateInput.val().trim() === '') {
             showError(startDateInput, 'Start Date is required');
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
         }
 
         // Validate End Date
         if (endDateInput.val().trim() === '') {
             showError(endDateInput, 'End Date is required');
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
         }
 
         // Validate Email
-        if (emailInput.val().trim() === '') {
+        var emailInputValue = emailInput.val().trim();
+
+        if (emailInputValue === '') {
             showError(emailInput, 'Email is required');
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
+        } else if (!validateEmail(emailInputValue)) {
+            showError(emailInput, 'The email must be a valid email address.');
+            e.preventDefault();
         }
 
         return true;
@@ -50,6 +55,12 @@ $(document).ready(function () {
     function showError(input, message) {
         var errorElement = $('<div class="error">' + message + '</div>');
         input.after(errorElement);
+    }
+
+    // Helper function to validate email format
+    function validateEmail(email) {
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     }
 
 });

@@ -2,6 +2,10 @@
 
 @section('title', 'TradeStat Data')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
+@endpush
+
 @section('content')
     <h1>Historical Quotes for {{ $symbol }}</h1>
     <h2>Date Range: {{ $startDate }} to {{ $endDate }}</h2>
@@ -49,6 +53,7 @@
 <!-- Push additional JS file to the 'scripts' stack -->
 @push('scripts')
     <!-- Add Chart.js JavaScript -->
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/chart.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -111,3 +116,4 @@
         });
     </script>
 @endpush
+
