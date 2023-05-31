@@ -2,13 +2,12 @@
 
 The TradeStat project is a Laravel application that fetches trading data from a third-party data source and displays the data based on validated company data obtained from another API. This project includes PHPUnit tests and Laravel Dusk tests for ensuring the functionality and integrity of the application.
 
-## Features
+## Features and Highlights
 
-- Fetches trading data from a third-party data source.
-- Validates and fetches company data from another API.
-- Displays and Graphical trading data based on validated company data.
-- Includes PHPUnit tests for unit testing.
-- Includes Laravel Dusk tests for browser automation testing.
+- Utilizes services/Clients classes for dependency injection and modular separation.
+- Custom exceptions are implemented to provide meaningful and informative error messages.
+- Contracts/interfaces are used to ensure flexibility and future extensibility.
+- Includes PHPUnit tests and browser tests using Laravel Dusk for comprehensive testing coverage.
 
 ## Requirements
 
@@ -40,7 +39,12 @@ To run the TradeStat project locally, you need to have the following requirement
     docker-compose up --build
    ```
 
+The docker setup will Create, Configure and Run the Container
 
+1. when Everything install and ready it will run. Access the TradeStat application in your browser:
+    ```bash
+    http://127.0.0.1:8000
+   ```
 
 ### Installation without Docker
 
@@ -50,13 +54,6 @@ To run the TradeStat project locally, you need to have the following requirement
     cd TradeStat
     composer install
    ```
-The docker setup will Create, Configure and Run the Container
-
-1. when Everything install and ready it will run. Access the TradeStat application in your browser:
-    ```bash
-    http://127.0.01:8000
-   ```
-
 1. Configure the environment variables:
 
 - Copy the .env.example file and rename it to .env.
@@ -75,7 +72,7 @@ The docker setup will Create, Configure and Run the Container
 
 1. Access the TradeStat application in your browser:
     ```bash
-    http://127.0.01:8000
+    http://127.0.0.1:8000
    ```
 ## Testing
 The TradeStat project includes both PHPUnit tests and Laravel Dusk tests for automated testing.
@@ -91,7 +88,7 @@ To run the Laravel Dusk tests, make sure you have a compatible browser driver in
     php artisan dusk
    ```
 
-Make sure to set up the necessary environment variables and configurations for running the tests
+Make sure to set up the necessary environment variables and configurations for running the tests.
 
 ## License
 
