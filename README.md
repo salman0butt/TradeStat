@@ -32,7 +32,7 @@ To run the TradeStat project locally, you need to have the following requirement
 1. Configure the environment variables:
 
 - Copy the .env.example file and rename it to .env.
-- Update the database credentials and other configuration variables in the .env file.
+- Update the TradState credentials and other configuration variables in the .env file.
 
 1. Install the Docker and inside Project root directory run:
 
@@ -60,7 +60,7 @@ The docker setup will Create, Configure and Run the Container
 1. Configure the environment variables:
 
 - Copy the .env.example file and rename it to .env.
-- Update the database credentials and other configuration variables in the .env file.
+- Update the TradState credentials and other configuration variables in the .env file.
 
 1. Generate a new application key:
 
