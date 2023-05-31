@@ -36,19 +36,20 @@ To run the TradeStat project locally, you need to have the following requirement
 1. Install the Docker and inside Project root directory run:
 
   ```bash
+    cd TradeStat
     docker-compose up --build
    ```
 
 The docker setup will Create, Configure and Run the Container
 
-1. when Everything install and ready it will run. Access the TradeStat application in your browser:
+when Everything install and ready it will run. Access the TradeStat application in your browser:
     ```bash
     http://127.0.0.1:8000
    ```
 
 ### Installation without Docker
 
-1. Install the project dependencies using Composer:
+Install the project dependencies using Composer:
 
   ```bash
     cd TradeStat
@@ -59,18 +60,18 @@ The docker setup will Create, Configure and Run the Container
 - Copy the .env.example file and rename it to .env.
 - Update the TradState credentials and other configuration variables in the .env file.
 
-1. Generate a new application key:
+Generate a new application key:
 
   ```bash
     php artisan key:generate
    ```
 
-1. Start the development server:
+Start the development server:
     ```bash
     php artisan serve
    ```
 
-1. Access the TradeStat application in your browser:
+Access the TradeStat application in your browser:
     ```bash
     http://127.0.0.1:8000
    ```
@@ -78,15 +79,15 @@ The docker setup will Create, Configure and Run the Container
 The TradeStat project includes both PHPUnit tests and Laravel Dusk tests for automated testing.
 
 To run the PHPUnit tests:
-    ```bash
+    ```php
     php artisan test
-   ```
+    ```
 
 To run the Laravel Dusk tests, make sure you have a compatible browser driver installed (e.g., ChromeDriver) and update the DuskTestCase class in tests/DuskTestCase.php with the appropriate configuration. Then, run the following command:
 
-    ```bash
+    ```php
     php artisan dusk
-   ```
+    ```
 
 Make sure to set up the necessary environment variables and configurations for running the tests.
 
