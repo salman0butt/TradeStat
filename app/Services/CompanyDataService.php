@@ -17,6 +17,13 @@ class CompanyDataService implements CompanyDataServiceInterface
     private int $cacheDuration;
     private string $apiUrl;
 
+    /**
+     * CompanyDataService constructor.
+     *
+     * @param HttpClientInterface $httpClient The HTTP client for making API requests.
+     * @param int $cacheDuration The duration in seconds to cache the company data.
+     * @param string $apiUrl The URL of the API endpoint for fetching the company data.
+     */
     public function __construct(
         HttpClientInterface $httpClient,
         int $cacheDuration,
@@ -28,6 +35,12 @@ class CompanyDataService implements CompanyDataServiceInterface
         $this->apiUrl = $apiUrl;
     }
 
+    /**
+     * Get company data.
+     *
+     * @return array The fetched company data.
+     * @throws FetchCompanyDataException if there is an error fetching the company data.
+     */
     public function getCompanyData()
     {
         return Cache::remember('company_data', $this->cacheDuration, function () {

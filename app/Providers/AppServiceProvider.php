@@ -18,17 +18,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $httpClient = new HttpClient();
-
-        $this->app->bind(HistoricalDataServiceInterface::class, function ($app) use($httpClient) {
+        $this->app->bind(HistoricalDataServiceInterface::class, function ($app) {
             $apiKey = config('global.RAPID_API_KEY');
             $apiUrl = config('global.RAPID_API_URL');
+            $httpClient = $app->make(HttpClient::class);
             return new HistoricalDataService($apiKey, $apiUrl, $httpClient);
         });
 
-        $this->app->bind(CompanyDataServiceInterface::class, function($app) use($httpClient) {
+        $this->app->bind(CompanyDataServiceInterface::class, function($app) {
             $cacheDuration = config('global.COMPANY_DATA_DURATION');
-            $apiUrl = config('global.RAPID_API_URL');
+            $apiUrl = config('global.COMPANY_DATA_URL');
+            $httpClient = $app->make(HttpClient::class);
             return new CompanyDataService($httpClient, $cacheDuration, $apiUrl);
         });
 

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Exception;
 use Carbon\Carbon;
 use Psr\Log\LoggerInterface;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\HistoricalDataRequest;
 use App\Exceptions\FetchCompanyDataException;
 use App\Contracts\CompanyDataServiceInterface;
@@ -18,13 +16,13 @@ use App\Exceptions\InvalidCompanySymbolException;
 class StockController extends Controller
 {
 
-    private $historicalDataService;
+    private HistoricalDataServiceInterface $historicalDataService;
 
-    private $companyDataService;
+    private CompanyDataServiceInterface $companyDataService;
 
-    private $stockEmailService;
+    private StockDataEmailServiceInterface $stockEmailService;
 
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * StockController constructor.
@@ -60,9 +58,9 @@ class StockController extends Controller
      * Get historical data and display it in a table.
      *
      * @param HistoricalDataRequest $request
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     * @return mixed
      */
-    public function getHistoricalData(HistoricalDataRequest $request): View | RedirectResponse
+    public function getHistoricalData(HistoricalDataRequest $request): mixed
     {
         try {
             $symbol = $request->input('company_symbol');
@@ -123,11 +121,10 @@ class StockController extends Controller
      * @param string $symbol
      * @return string
      */
-    private function getCompanyName($symbol): string
+    private function getCompanyName(string $symbol): string
     {
         // Fetch Comapny Data via historicalDataService
         $companyData = $this->companyDataService->getCompanyData();
-
         foreach ($companyData as $company) {
             if ($company['Symbol'] === $symbol) {
                 return $company['Company Name'];
@@ -145,7 +142,7 @@ class StockController extends Controller
      * @param string $endDate
      * @return array
      */
-    private function filterHistoricalData($symbol, $startDate, $endDate): array
+    private function filterHistoricalData(string $symbol,string $startDate,string $endDate): array
     {
         // fetch historical data via historicalDataService
         $historicalData = $this->historicalDataService->fetchHistoricalData($symbol);
@@ -173,7 +170,7 @@ class StockController extends Controller
      * @param string $email
      * @param array $data
      */
-    private function sendStockDataEmail($email, $data): void
+    private function sendStockDataEmail(string $email, array $data): void
     {
         // send email via stockEmailService
         $this->stockEmailService->sendEmail($email, $data);
